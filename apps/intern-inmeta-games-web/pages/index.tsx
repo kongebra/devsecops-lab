@@ -4,15 +4,25 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export const getServerSideProps = async () => {
-  const client = new PrismaClient();
+  try {
+    const client = new PrismaClient();
 
-  const posts = await client.post.findMany();
+    const posts = await client.post.findMany();
 
-  return {
-    props: {
-      posts,
-    },
-  };
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (ex) {
+    console.error(ex);
+
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
 };
 
 export default function Home() {
