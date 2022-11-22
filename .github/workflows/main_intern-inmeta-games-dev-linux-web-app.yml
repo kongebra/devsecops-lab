@@ -22,9 +22,8 @@ jobs:
           node-version: "16.x"
 
       - name: yarn install, build, and test
+        working-directory: apps/intern-inmeta-games-web
         run: |
-          cd apps/intern-inmeta-games-web
-
           yarn --frozen-lockfile
           yarn build
 
