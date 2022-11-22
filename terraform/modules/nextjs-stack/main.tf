@@ -38,6 +38,10 @@ resource "azurerm_linux_web_app" "app" {
     }
   }
 
+  # app_settings = {
+  #   "DATABASE_URL" = "postgres://${var.db_administrator_login}:${random_password.db_password.result}@${azurerm_postgresql_flexible_server.db.fqdn}/postgres?sslmode=require"
+  # }
+
   connection_string {
     name  = "DATABASE_URL"
     type  = "PostgreSQL"

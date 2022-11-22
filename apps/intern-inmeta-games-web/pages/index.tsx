@@ -4,6 +4,8 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 export const getServerSideProps = async () => {
+  console.log("ENV", process.env);
+
   try {
     const client = new PrismaClient();
 
