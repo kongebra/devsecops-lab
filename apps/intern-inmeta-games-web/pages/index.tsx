@@ -9,6 +9,8 @@ export const getServerSideProps = async () => {
 
     const posts = await client.post.findMany();
 
+    console.log("posts", posts);
+
     return {
       props: {
         posts,
