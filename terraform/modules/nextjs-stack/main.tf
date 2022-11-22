@@ -34,14 +34,14 @@ resource "azurerm_linux_web_app" "app" {
     http2_enabled    = true
 
     application_stack {
-      node_version = "18-lts"
+      node_version = "16-lts"
     }
   }
 
   connection_string {
     name  = "DATABASE_URL"
     type  = "PostgreSQL"
-    value = "postgresql://${var.db_administrator_login}:${random_password.db_password.result}@${azurerm_postgresql_flexible_server.db.fqdn}/postgres?schema=public"
+    value = "postgres://${var.db_administrator_login}:${random_password.db_password.result}@${azurerm_postgresql_flexible_server.db.fqdn}/postgres?sslmode=require"
   }
 }
 
